@@ -24,5 +24,4 @@ func (c *Controller) AdminCreatePost(ctx iris.Context) {
 
 func (c *Controller) AdminGetCreatePostPage(ctx iris.Context) {
 	ctx.View("/admin/blog/create.html")
-
 }
