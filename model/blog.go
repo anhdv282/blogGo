@@ -1,6 +1,10 @@
 package model
 
-import "time"
+import (
+	"fmt"
+	"github.com/go-pg/pg/v9"
+	"time"
+)
 
 type Post struct {
 	// Tao shema blog
@@ -21,4 +25,13 @@ type Post struct {
 	PublishedAt time.Time 
 	// Trạng thái: 0 - nháp, 1 - xuất bản 
 	Status int32 `sql:",notnull"`
+}
+
+func GetFirstPost(model Post, db *pg.DB) Post {
+	err := db.Model(&model).Column("post.*").First()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(model.Content)
+	return model
 }
