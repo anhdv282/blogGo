@@ -8,5 +8,5 @@ import (
 func AdminRoutes(c *controller.Controller, api iris.Party) {
 	api.Get("/posts", c.AdminGetPosts)
 	api.Get("/posts/create", c.AdminGetCreatePostPage)
-	api.Post("/posts/create", c.AdminCreatePost)
+	api.Post("/create_form", c.AdminCreatePost)
 }

@@ -27,11 +27,16 @@ type Post struct {
 	Status int32 `sql:",notnull"`
 }
 
-func GetFirstPost(model Post, db *pg.DB) Post {
-	err := db.Model(&model).Column("post.*").First()
+func GetFirstPost(model *Post, db *pg.DB){
+	err := db.Model(model).Column("post.*").First()
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println(model.Content)
-	return model
+}
+
+func GetPosts(db *pg.DB) ([]Post, error) {
+	var posts []Post
+	_, err := db.Query(&posts, `SELECT * FROM blog.post`)
+	return posts, err
 }

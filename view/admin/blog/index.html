@@ -3,21 +3,33 @@ Trang danh sách bài viết của admin
     <div class="row">
 
         <div class="col-md-8 col-sm-6 col-xs-12">
-            <div>
-                <div>
-                    {{.post.Title}}
-                </div>
-                <hr />
-                <div>
-                    {{.post.Content}}
-                </div>
-                <hr />
-                <div>{{.post.CreatedBy}}</div>
-                <hr />
-                <div>{{.post.CreatedAt}}</div>
-                <hr />
-                <div>{{.post.Status}}</div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>CreatedBy</th>
+                        <th>CreatedAt</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{ range .posts}}
+                        <th>PublishedAt</th>
+                    <tr>
+                        <td>{{.Title}}</td>
+                        <td>{{.Content}}</td>
+                        <td>{{.CreatedBy}}</td>
+                        <td>{{.CreatedAt}}</td>
+                        <td>{{.PublishedAt}}</td>
+                        <td>{{.Status}}</td>
+                    </tr>
+                    {{ end }}
+                    </tbody>
+                </table>
             </div>
+
         </div>
     </div>
 </div>
